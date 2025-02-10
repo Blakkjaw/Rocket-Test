@@ -1,15 +1,22 @@
-<nav class="navbar bg-body-secondary">
-  <div class="container-fluid">
-    <span class="navbar-brand mb-0 h1">Test</span>
-    <input type="text" [value]="userFilter" (change)="userFilterChange()" placeholder="Usuario">
+<nav class="navbar bg-body-secondary mb-4">
+  <div class="container-fluid d-flex justify-content-center">
+    <span class="navbar-brand mb-0 h1 me-3">Test</span>
+    <div class="d-flex justify-content-center w-100">
+      <input type="text" [value]="userFilter" (change)="userFilterChange($event)" placeholder="Usuario" class="form-control w-auto">
+    </div>
   </div>
 </nav>
-<div *ngIf="users.length > 0" class="container text-center">
-  <div *ngFor="let user of users" class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">{{user.name}}</h5>
-      <h6 class="card-subtitle mb-2 text-body-secondary">{{user.username}}</h6>
-      <p class="card-text">{{user.email}}</p>
+
+<div *ngIf="displayedUsers.length > 0" class="container text-center">
+  <div class="row">
+    <div *ngFor="let user of displayedUsers; let i = index" class="col-lg-2 col-md-4 col-sm-6 mb-4">
+      <div class="card" style="width: 100%;">
+        <div class="card-body">
+          <h5 class="card-title">{{ user.name }}</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">{{ user.username }}</h6>
+          <p class="card-text">{{ user.email }}</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

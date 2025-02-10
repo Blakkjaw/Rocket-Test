@@ -14,11 +14,9 @@ export class MainComponent {
   userFilter :string = '';
   constructor(private _userService: UserService){}
 
-  userFilterChange(val : string){
+  userFilterChange(ev:any){
     debounceTime(500);
-    this.userFilter = val;
-    console.log(this.userFilter);
-    // this.displayedUsers = this.users.filter(e=> e.name === ev.value);
+    this.displayedUsers = this.users.filter(e=> e.name.toLowerCase().includes(ev.target.value.toLowerCase()));
   }
 
   ngOnInit(){
